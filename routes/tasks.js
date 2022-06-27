@@ -24,6 +24,13 @@ router.post('/', async (req,res, next) => {
   }
 })
 
+// wasn't paying attention so this isn't correct
+// router.get('/add/:ownerId/task/:taskId', async(req,res,next) => {
+//   const {taskId,ownerId} = req.params
+//   Task.getOwner(ownerId)
+// })
+
+
 router.delete('/:id', async (req,res,next) => {
   try {//delete or get would use a parameter, not a body item
   const {id} = req.params
