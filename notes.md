@@ -11,3 +11,13 @@ main benefits of back to front
 Building forward (back to front) - no need to fake any data, comes from the real db
 
 primary key by default is ids
+
+API routes and the views routes
+
+API routes:
+
+// error handler goes on the bottom because it's only hit if none of the other routes get matched
+
+
+Views routes - front end:
+

@@ -2,31 +2,23 @@
 
 const express = require("express");
 const router = express.Router();
+const tasksRouter = require('./tasks')
+const ownersRouter = require('./owners')
 
-// const {
-//   reset,
-//   listPeople,
-//   add,
-//   list,
-//   remove,
-//   complete,
-// } = require("../models/todos");
-// const todos = require("../models/todos");
-// const morgan = require("morgan");
-// const chaiAsPromised = require("chai-as-promised");
+// middleware
 
-// router.use(morgan("dev"));
+// API routes
+// routes for tasks and owners
 
-// // write your routes here. Feel free to split into multiple files if you like.
-// router.get("/", (req, res) => {});
+// api / tasks
+router.use('/tasks', tasksRouter)
+// sends the request to / tasks and into the tasksRouter file
 
-// // creates a page meant to list the tasks for a provided name
-// router.get("/:name/tasks", (req, res) => {});
+// api/owners
+router.use('/owners', ownersRouter)
 
-// router.post("/:name/tasks", async (req, res) => {});
+// no real view routes, so focus on api routes
 
-// router.put("/:name/tasks/:index", (req, res) => {});
+// error handling / 404
 
-// router.delete("/:name/tasks/:index", (req, res) => {});
-
-// module.exports = router;
+module.exports = router;
