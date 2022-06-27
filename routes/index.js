@@ -19,6 +19,6 @@ router.use('/owners', ownersRouter)
 
 // no real view routes, so focus on api routes
 
-// error handling / 404
+
 
 module.exports = router;

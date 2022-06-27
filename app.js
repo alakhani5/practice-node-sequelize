@@ -24,6 +24,31 @@ app.use("/api", apiRouter);
 
 // initialization function to run the db connection
 
+// error handling / 404
+// passing anything to next will find the nearest error handler
+// e.g., error handler in the router/tasks area, BUT needs to be copied and pasted everywhere
+// need at least one of them to be a general error handler
+
+// errors are just objects
+// can access various keys and values of the objects e.g., error.status = value
+
+// error handler only watches for errors specifically, NOT incorrect / invalid routes
+app.use((err,req,res,next) => {
+  console.log(err) // for us
+
+  let statusCode = err.status || 500
+  // the or (||)
+  res.status(statusCode).send('An error occurred on the server: '+ err.message) // for users / the client
+})
+
+
+// someone trying to access a url path that did not have a corresponding route for it e.g., localhost/3000/blah isn't a valid route
+// this is the last case
+app.use((req,res,next) => {
+  res.status(404).send(`CANNOT ${req.method} ${req.url}`)
+})
+
+
 async function init() {
   try {
     db.sync();
