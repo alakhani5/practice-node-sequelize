@@ -22,16 +22,17 @@ async function run() {
 
     let task = await Task.findByPk(1)
 
-
+    // can either have the owner add a task or the task can add an owner
+    // only need to do one:
     await cherry.addTask(task) // creates an association between cherry and the task
-
+    // await task.addOwner(cherry)
     // console.log('this is cherry',cherry)
     // console.log('this is find by pk', task)
   } catch (err) {
     console.error(err);
   } finally {
     // finally will always execute, even after an error
-    // await db.close(); // close closes the connection to the db
+    await db.close(); // close closes the connection to the db
     console.log('closed db')
   }
 }
